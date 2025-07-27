@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>PICKLES</title>
+
+    <link href="/assets/images/logo.jpg" rel="icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+    <link href="/static/stylesheets/theme.css" rel="stylesheet">
+    <link href="/static/stylesheets/common.css" rel="stylesheet">
+    <script defer src="/static/scripts/common.js" id="script-main" data-child-script="logged.js"></script>
+
+    <style>
+        #inp-comm-description {
+            min-height: unset;
+            height: 75px;
+        }
+    </style>
+</head>
+
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars {{theme}}">
+    <div class="modal" id="add-post" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <h5 class="modal-title">Add Post</h5>
+                <form id="form-add-post" enctype="multipart/form-data">
+                    <div class="text-center mb-10">
+                        <div class="custom-file">
+                            <input name="file" type="file" id="inp-post-file" accept=".jpg,.jpeg,.png,.gif"
+                                class="d-none">
+                            <label for="inp-post-file" class="bg-transparent p-0 shadow-none border-0 w-full h-250">
+                                <img id="img-post-file" src="/assets/images/emptyFile.gif" class="img-fluid fill-image">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="inp-post-title" class="required">Title</label>
+                    <div class="form-group">
+                        <input name="title" type="text" id="inp-post-title" class="form-control"
+                            placeholder="Title of the post">
+                    </div>
+                    <label for="inp-post-comm" class="required">Community</label>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">#</span>
+                        </div>
+                        <input name="communityName" type="text" id="inp-post-comm" class="form-control"
+                            placeholder="Community to post into">
+                    </div>
+                    <button class="btn btn-block" type="button" id="btn-add-post-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="create-comm" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <h5 class="modal-title">Create Community</h5>
+                <form id="form-create-comm" enctype="multipart/form-data">
+                    <div class="text-center mb-10">
+                        <div class="custom-file">
+                            <input name="banner" type="file" id="inp-comm-banner" accept=".jpg,.jpeg,.png,.gif"
+                                class="d-none">
+                            <label for="inp-comm-banner" class="bg-transparent p-0 shadow-none border-0 w-full h-200">
+                                <img id="img-create-comm-banner" src="/assets/images/emptyFile.gif"
+                                    class="img-fluid fill-image">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="inp-comm-name" class="required">Name</label>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">#</span>
+                        </div>
+                        <input name="name" type="text" id="inp-comm-name" class="form-control"
+                            placeholder="Name of your community">
+                    </div>
+                    <div class="form-group">
+                        <label for="inp-comm-description" class="required">Description</label>
+                        <textarea name="description" id="inp-comm-description" class="form-control"
+                            placeholder="A short description of your community"></textarea>
+                    </div>
+                    <button class="btn btn-block" type="button" id="btn-create-comm-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-image" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-media w-500">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <img src="#" class="img-fluid" id="img-modal">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-loading" tabindex="-1" data-overlay-dismissal-disabled="true"
+        data-esc-dismissal-disabled="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-media w-500">
+                <img src="#" class="img-fluid" id="img-loading">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="about-me" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <h5 class="modal-title mb-10">About Us</h5>
+                <div class="mx-auto mb-20 w-200 h-200">
+                    <img src="/assets/images/aboutMe.png" class="img-fluid rounded-circle fill-image">
+                </div>
+                <div class="mb-20">
+                    I am a Software Engineering undergraduate student at Delhi Technological University.
+                    I love coding and building things!
+                </div>
+                <div>
+                    <a href="https://github.com/mittal-mayank" target="_blank" class="link-no-style">
+                        <button class="btn mr-10 mb-10" type="button" id="btn-github">
+                            <i class="fab fa-github font-size-18"></i>
+                        </button>
+                    </a>
+                    <label for="btn-github">
+                        GitHub
+                    </label>
+                </div>
+                <div>
+                    <a href="https://www.linkedin.com/in/mayank-mittal-6994741ba/" target="_blank"
+                        class="link-no-style">
+                        <button class="btn mr-10" type="button" id="btn-linkedin">
+                            <i class="fab fa-linkedin-in font-size-18"></i>
+                        </button>
+                    </a>
+                    <label for="btn-linkedin">
+                        LinkedIn
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrapper with-navbar with-sidebar with-transitions" data-sidebar-type="overlayed-sm-and-down">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <button class="btn btn-small" type="button" onclick="halfmoon.toggleSidebar();">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <a href="/" class="navbar-brand">
+                <img src="/assets/images/logo.jpg">
+                PICKLES
+            </a>
+            <ul class="navbar-nav d-none d-md-flex">
+                <li class="nav-item {{#if communityFeed}}active{{/if}}">
+                    <a href="/" class="nav-link">Community Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link btn-following-feed">Following Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link btn-recent-posts">Recent Posts</a>
+                </li>
+            </ul>
+
+            <div class="navbar-content ml-auto">
+                <button id="btn-theme" class="btn btn-small mr-10" type="button" onclick="halfmoon.toggleDarkMode()">
+                    <i class="far fa-moon"></i>
+                </button>
+                <div class="dropdown with-arrow">
+                    <button class="btn btn-small" data-toggle="dropdown" type="button">
+                        <i class="far fa-user-circle font-size-16"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right p-0">
+                        <div class="text-center">
+                            <div class="w-150 h-150 mx-auto my-5">
+                                <a href="#modal-image">
+                                    <img src="{{user.avatar}}"
+                                        class="img-fluid rounded-circle fill-image link-modal-img">
+                                </a>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" onclick="notyfFeatureComingSoon();">{{user.handle}}</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-content">
+                                <a href="#" class="btn" id="btn-logout">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-md-none">
+                    <div class="dropdown with-arrow">
+                        <button class="btn btn-small ml-10" data-toggle="dropdown" type="button">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right w-200">
+                            <a href="/" class="dropdown-item">Community Feed</a>
+                            <a href="#" class="dropdown-item btn-following-feed">Following Feed</a>
+                            <a href="#" class="dropdown-item btn-recent-posts">Recent Posts</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar();">
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <div class="sidebar-content">
+                    <input type="text" class="form-control" placeholder="@handle or #community" id="inp-search">
+                </div>
+                <div class="sidebar-content">
+                    <div>
+                        <a href="#add-post" class="link-no-style">
+                            <button class="btn mr-10 mb-10" type="button" id="btn-add-post">
+                                <i class="far fa-image w-25"></i>
+                            </button>
+                        </a>
+                        <label for="btn-add-post">
+                            Add Post
+                        </label>
+                    </div>
+                    <div>
+                        <a href="#create-comm" class="link-no-style">
+                            <button class="btn mr-10" type="button" id="btn-create-comm">
+                                <i class="fas fa-users w-25"></i>
+                            </button>
+                        </a>
+                        <label for="btn-create-comm">
+                            Create Community
+                        </label>
+                    </div>
+                </div>
+                <h5 class=" sidebar-title">Created Communities</h5>
+                <div class="sidebar-divider"></div>
+                {{#each user.createdCommunities}}
+                <a href="/c/{{this.name}}" class="sidebar-link sidebar-link-with-icon">
+                    <span class="w-25 h-25 mr-10">
+                        <img src="{{this.banner}}" class="img-fluid fill-image align-middle">
+                    </span>
+                    {{this.name}}
+                </a>
+                {{/each}}
+                <br>
+                <h5 class="sidebar-title">Followed Communities</h5>
+                <div class="sidebar-divider"></div>
+                <div id="div-followed-comm">
+                    {{#each user.followedCommunities}}
+                    <a href="/c/{{this.name}}" class="sidebar-link sidebar-link-with-icon" id="{{this.name}}">
+                        <span class="w-25 h-25 mr-10">
+                            <img src="{{this.banner}}" class="img-fluid fill-image align-middle">
+                        </span>
+                        {{this.name}}
+                    </a>
+                    {{/each}}
+                </div>
+                <br>
+                <h5 class="sidebar-title">Popular Communities</h5>
+                <div class="sidebar-divider"></div>
+                {{#each popularCommunities}}
+                <a href="/c/{{this.name}}" class="sidebar-link sidebar-link-with-icon">
+                    <span class="w-25 h-25 mr-10">
+                        <img src="{{this.banner}}" class="img-fluid fill-image align-middle">
+                    </span>
+                    {{this.name}}
+                </a>
+                {{/each}}
+            </div>
+            <div id="footer">
+                <div class="sidebar-divider" id="footer-divider"></div>
+                <a href="#about-me" class="sidebar-link sidebar-link-with-icon" id="link-about-me">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </span>
+                    About Us
+                </a>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div id="div-content-header" class="{{#if communityFeed}}mb-5{{/if}}">
+                {{#if community}}
+                <div class="card p-0 m-10 mb-5" id="div-community-card">
+                    <div class="content container-fluid m-0 p-0">
+                        <div class="row">
+                            <div class="col-12 col-sm-3 col-lg-2 h-200" id="div-cntr-comm-banner">
+                                <a href="#modal-image">
+                                    <img src="{{community.banner}}" class="img-fluid fill-image link-modal-img"
+                                        id="img-comm-banner">
+                                </a>
+                            </div>
+                            <div class="col-12 col-sm-9 col-lg-10 d-flex align-items-center" id="div-comm-content">
+                                <div>
+                                    <h2 class="content-title">
+                                        {{community.name}}
+                                    </h2>
+                                    <p class="text-muted">
+                                        {{community.description}}
+                                    </p>
+                                    <div>
+                                        {{#if isAdmin}}
+                                        <span class="badge border rounded span-num-users">
+                                            <i class="fas fa-users-cog text-secondary mr-5"></i>
+                                            {{community.numUsers}} members
+                                        </span>
+                                        {{else}}
+                                        <button class="btn badge" id="btn-follow-comm" type="button">
+                                            <i class="fas {{#if hasFollowedComm}}fa-user-check text-success{{else}}fa-user-plus{{/if}} text-primary mr-5"
+                                                id="icon-follow-comm"></i>
+                                            <span id="span-follow-comm">
+                                                {{community.numUsers}} members
+                                            </span>
+                                        </button>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            <div id="div-content-body">
+                {{#each communityFeed}}
+                <div class="div-post-box">
+                    <div class="card p-0 m-5 div-post-card">
+                        <div class="div-post-image">
+                            <a href="#modal-image">
+                                <img src="{{this.file}}" class="img-fluid fill-image link-modal-img">
+                            </a>
+                        </div>
+                        <div class="m-10">
+                            <div class="font-weight-medium font-size-18 mb-5">
+                                {{this.title}}
+                            </div>
+                            <div class="text-muted div-post-comm" onclick="openCommunity(event);">
+                                {{this.belongsTo.name}}
+                            </div>
+                            <div class="div-author" onclick="notyfFeatureComingSoon();">
+                                {{this.author.handle}}
+                            </div>
+                            <div class="div-saves" onclick="notyfFeatureComingSoon();">
+                                <i class="far fa-heart mr-5"></i>
+                                {{this.numLikes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                {{#each community.addedPosts}}
+                <div class="div-post-box">
+                    <div class="card p-0 m-5 div-post-card">
+                        <div class="div-post-image">
+                            <a href="#modal-image">
+                                <img src="{{this.file}}" class="img-fluid fill-image link-modal-img">
+                            </a>
+                        </div>
+                        <div class="m-10">
+                            <div class="font-weight-medium font-size-18 mb-5">
+                                {{this.title}}
+                            </div>
+                            <div class="text-muted div-post-comm" onclick="openCommunity(event);">
+                                {{this.belongsTo.name}}
+                            </div>
+                            <div class="div-author" onclick="notyfFeatureComingSoon();">
+                                {{this.author.handle}}
+                            </div>
+                            <div class="div-saves" onclick="notyfFeatureComingSoon();">
+                                <i class="far fa-heart mr-5"></i>
+                                {{this.numLikes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

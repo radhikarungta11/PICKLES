@@ -1,0 +1,25 @@
+{
+    "name": "pickles",
+    "version": "1.0.0",
+    "description": "An image-sharing website that allows users to interact inside different communities",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./bin/server.js"
+    },
+    "author": "mittal-mayank",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cloudinary": "^1.25.1",
+        "connect-mongo": "^4.4.1",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "hbs": "^4.1.2",
+        "mongoose": "^5.12.2",
+        "multer": "^1.4.2",
+        "multer-storage-cloudinary": "^4.0.0"
+    },
+    "engines": {
+        "node": "18.11.0"
+    }
+}

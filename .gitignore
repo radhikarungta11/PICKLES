@@ -1,0 +1,6 @@
+/node_modules
+/uploads/images/avatars/*
+/uploads/images/banners/*
+/uploads/images/postFiles/*
+!/**/.gitkeep
+env.json

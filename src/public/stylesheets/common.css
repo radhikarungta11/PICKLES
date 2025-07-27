@@ -1,0 +1,167 @@
+.sidebar {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-menu {
+    margin-top: 0;
+}
+
+#footer {
+    width: 100%;
+}
+
+#footer-divider {
+    margin: 0;
+}
+
+#link-about-me {
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+    transform: translateX(-10px);
+}
+
+.fill-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.link-no-style:hover {
+    text-decoration: none;
+}
+
+#inp-search {
+    transition: 0.2s;
+}
+
+.div-author,
+.div-saves {
+    color: #ffffff;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+}
+
+.div-author {
+    right: 10px;
+}
+
+.div-saves {
+    left: 10px;
+}
+
+.div-post-comm {
+    cursor: pointer;
+}
+
+.span-num-users {
+    padding: 8px;
+}
+
+#div-comm-content {
+    padding: 20px;
+}
+
+#img-comm-banner {
+    border-radius: var(--card-border-radius) 0 0 var(--card-border-radius);
+}
+
+#div-content-body {
+    padding-top: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    margin: auto;
+}
+
+#div-content-body > * {
+    transition: 0.2s;
+}
+
+.div-post-card {
+    overflow: hidden;
+}
+
+.div-post-image {
+    height: 300px;
+}
+
+body .div-post-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(to bottom, #333333, transparent);
+    opacity: 0.8;
+    border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+}
+
+body.dark-mode .div-post-image::before {
+    background-image: linear-gradient(to bottom, #111111, transparent);
+}
+
+@media (max-width: 2000px) {
+    .div-post-box {
+        width: 25%;
+    }
+}
+
+@media (max-width: 1500px) {
+    .div-post-box {
+        width: 33.3%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .div-post-box {
+        width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    #img-comm-banner {
+        border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+    }
+}
+
+@media (max-width: 500px) {
+    .div-post-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    #div-community-card {
+        margin: 10px 0 !important;
+        margin-bottom: 5px !important;
+    }
+    #div-content-body {
+        width: 100%;
+    }
+    .div-post-card {
+        margin: 5px 0 !important;
+    }
+    #div-cntr-comm-banner {
+        height: 300px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .btn-small {
+        padding: 0 5px;
+        width: 30px;
+        margin-right: 2px !important;
+        margin-left: 2px !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .btn-small {
+        padding: 0 3px;
+        width: 25px;
+    }
+}

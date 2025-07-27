@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>PICKLES</title>
+
+    <link href="/assets/images/logo.jpg" rel="icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+    <link href="/static/stylesheets/theme.css" rel="stylesheet">
+    <link href="/static/stylesheets/common.css" rel="stylesheet">
+    <script defer src="/static/scripts/common.js" id="script-main" data-child-script="unlogged.js"></script>
+
+    <style>
+        #inp-bio-signup {
+            min-height: unset;
+            height: 75px;
+        }
+    </style>
+</head>
+
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars {{theme}}">
+    <div class="modal" id="login" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <h5 class="modal-title">Log In</h5>
+                <form id="form-login">
+                    <label for="inp-handle-login" class="required">Handle</label>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input name="handle" type="text" id="inp-handle-login" class="form-control"
+                            placeholder="Your account handle">
+                    </div>
+                    <div class="form-group">
+                        <label for="inp-password-login" class="required">Password</label>
+                        <input name="password" type="password" id="inp-password-login" class="form-control"
+                            placeholder="Your account password">
+                    </div>
+                    <button class="btn btn-block" type="button" id="btn-login-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="signup" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <h5 class="modal-title">Sign Up</h5>
+                <form id="form-signup" enctype="multipart/form-data">
+                    <div class="text-center mb-10">
+                        <div class="custom-file">
+                            <input name="avatar" type="file" id="inp-avatar-signup" accept=".jpg,.jpeg,.png,.gif"
+                                class="d-none">
+                            <label for="inp-avatar-signup" class="bg-transparent p-0 shadow-none border-0 w-150 h-150">
+                                <img id="img-avatar-signup" src="/assets/images/defaultAvatar.png"
+                                    class="img-fluid rounded-circle fill-image">
+                            </label>
+                        </div>
+                    </div>
+                    <label for="inp-handle-signup" class="required">Handle</label>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input name="handle" type="text" id="inp-handle-signup" class="form-control"
+                            placeholder="Your account handle">
+                    </div>
+                    <div class="form-group">
+                        <label for="inp-password-signup" class="required">Password</label>
+                        <input name="password" type="password" id="inp-password-signup" class="form-control"
+                            placeholder="Your account password">
+                    </div>
+                    <div class="form-group">
+                        <label for="inp-bio-signup">Bio</label>
+                        <textarea name="bio" id="inp-bio-signup" class="form-control"
+                            placeholder="A short introduction about yourself"></textarea>
+                    </div>
+                    <button class="btn btn-block" type="button" id="btn-signup-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-image" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-media w-500">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <img src="#" class="img-fluid" id="img-modal">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-loading" tabindex="-1" data-overlay-dismissal-disabled="true"
+        data-esc-dismissal-disabled="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-content-media w-500">
+                <img src="#" class="img-fluid" id="img-loading">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="about-me" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="close">
+                    <span>&times;</span>
+                </a>
+                <h5 class="modal-title mb-10">About Us</h5>
+                <div class="mx-auto mb-20 w-200 h-200">
+                    <img src="/assets/images/aboutMe.png" class="img-fluid rounded-circle fill-image">
+                </div>
+                <div class="mb-20">
+                    I am a Software Engineering undergraduate student at Delhi Technological University.
+                    I love coding and building things!
+                </div>
+                <div>
+                    <a href="https://github.com/mittal-mayank" target="_blank" class="link-no-style">
+                        <button class="btn mr-10 mb-10" type="button" id="btn-github">
+                            <i class="fab fa-github font-size-18"></i>
+                        </button>
+                    </a>
+                    <label for="btn-github">
+                        GitHub
+                    </label>
+                </div>
+                <div>
+                    <a href="https://www.linkedin.com/in/mayank-mittal-6994741ba/" target="_blank"
+                        class="link-no-style">
+                        <button class="btn mr-10" type="button" id="btn-linkedin">
+                            <i class="fab fa-linkedin-in font-size-18"></i>
+                        </button>
+                    </a>
+                    <label for="btn-linkedin">
+                        LinkedIn
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrapper with-navbar with-sidebar with-transitions" data-sidebar-type="overlayed-sm-and-down">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <button class="btn btn-small" type="button" onclick="halfmoon.toggleSidebar();">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <a href="/" class="navbar-brand">
+                <img src="/assets/images/logo.jpg">
+                PICKLES
+            </a>
+            <ul class="navbar-nav d-none d-md-flex">
+                <li class="nav-item {{#if recentFeed}}active{{/if}}">
+                    <a href="/" class="nav-link">Recent Posts</a>
+                </li>
+            </ul>
+
+            <div class="navbar-content ml-auto">
+                <button id="btn-theme" class="btn btn-small" type="button" onclick="halfmoon.toggleDarkMode()">
+                    <i class="far fa-moon"></i>
+                </button>
+                <div class="d-none d-md-flex">
+                    <a href="#login" class="btn mx-10">Log In</a>
+                    <a href="#signup" class="btn">Sign Up</a>
+                </div>
+                <div class=" d-md-none">
+                    <div class="dropdown with-arrow">
+                        <button class="btn btn-small ml-10" data-toggle="dropdown" type="button">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right w-200">
+                            <a href="/" class="dropdown-item">Recent Posts</a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-content d-flex justify-content-around">
+                                <a href="#login" class="btn">Log In</a>
+                                <a href="#signup" class="btn">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar();">
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <div class="sidebar-content">
+                    <input type="text" class="form-control" placeholder="@handle or #community" id="inp-search">
+                </div>
+                <div class="sidebar-content">
+                    <a href="#signup" class="mr-5 link-no-style">
+                        <button id="btn-sidebar-signup" class="btn" type="button">
+                            Sign Up
+                        </button>
+                    </a>
+                    <label for="btn-sidebar-signup">
+                        for much more!
+                    </label>
+                </div>
+                <h5 class="sidebar-title">Popular Communities</h5>
+                <div class="sidebar-divider"></div>
+                {{#each popularCommunities}}
+                <a href="/c/{{this.name}}" class="sidebar-link sidebar-link-with-icon">
+                    <span class="w-25 h-25 mr-10">
+                        <img src="{{this.banner}}" class="img-fluid fill-image align-middle">
+                    </span>
+                    {{this.name}}
+                </a>
+                {{/each}}
+            </div>
+            <div id="footer">
+                <div class="sidebar-divider" id="footer-divider"></div>
+                <a href="#about-me" class="sidebar-link sidebar-link-with-icon" id="link-about-me">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </span>
+                    About Us
+                </a>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div id="div-content-header" class="{{#if recentFeed}}mb-5{{/if}}">
+                {{#if community}}
+                <div class="card p-0 m-10 mb-5" id="div-community-card">
+                    <div class="content container-fluid m-0 p-0">
+                        <div class="row">
+                            <div class="col-12 col-sm-3 col-lg-2 h-200" id="div-cntr-comm-banner">
+                                <a href="#modal-image">
+                                    <img src="{{community.banner}}" class="img-fluid fill-image link-modal-img"
+                                        id="img-comm-banner">
+                                </a>
+                            </div>
+                            <div class="col-12 col-sm-9 col-lg-10 d-flex align-items-center" id="div-comm-content">
+                                <div>
+                                    <h2 class="content-title">
+                                        {{community.name}}
+                                    </h2>
+                                    <p class="text-muted">
+                                        {{community.description}}
+                                    </p>
+                                    <div>
+                                        <span class="badge border rounded span-num-users">
+                                            <i class="fas fa-user-friends text-primary mr-5"></i>
+                                            {{community.numUsers}} members
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            <div id="div-content-body">
+                {{#each recentFeed}}
+                <div class="div-post-box">
+                    <div class="card p-0 m-5 div-post-card">
+                        <div class="div-post-image">
+                            <a href="#modal-image">
+                                <img src="{{this.file}}" class="img-fluid fill-image link-modal-img">
+                            </a>
+                        </div>
+                        <div class="m-10">
+                            <div class="font-weight-medium font-size-18 mb-5">
+                                {{this.title}}
+                            </div>
+                            <div class="text-muted div-post-comm" onclick="openCommunity(event);">
+                                {{this.belongsTo.name}}
+                            </div>
+                            <div class="div-author" onclick="notyfFeatureComingSoon();">
+                                {{this.author.handle}}
+                            </div>
+                            <div class="div-saves" onclick="notyfPleaseLogIn();">
+                                <i class="far fa-heart mr-5"></i>
+                                {{this.numLikes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                {{#each community.addedPosts}}
+                <div class="div-post-box">
+                    <div class="card p-0 m-5 div-post-card">
+                        <div class="div-post-image">
+                            <a href="#modal-image">
+                                <img src="{{this.file}}" class="img-fluid fill-image link-modal-img">
+                            </a>
+                        </div>
+                        <div class="m-10">
+                            <div class="font-weight-medium font-size-18 mb-5">
+                                {{this.title}}
+                            </div>
+                            <div class="text-muted div-post-comm" onclick="openCommunity(event);">
+                                {{this.belongsTo.name}}
+                            </div>
+                            <div class="div-author" onclick="notyfFeatureComingSoon();">
+                                {{this.author.handle}}
+                            </div>
+                            <div class="div-saves" onclick="notyfPleaseLogIn();">
+                                <i class="far fa-heart mr-5"></i>
+                                {{this.numLikes}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
