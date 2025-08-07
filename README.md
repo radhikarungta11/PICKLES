@@ -6,7 +6,7 @@
 
 You can add posts, create communties, follow communities, view posts curated for you and much more!
 
-<div align="center">
+<div align="center"> 
     <img src="./screenshots/1.png" width="45%">
     <img src="./screenshots/6.png" width="45%">
     <img src="./screenshots/2.png" width="45%">
