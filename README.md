@@ -124,11 +124,6 @@ The back-end has been made using,
         └── postFiles
 ```
 
-## 🐛 Bug Reporting
 
-Feel free to [open an issue](https://github.com/mittal-mayank/pickles/issues) on GitHub if you find any bug.
 
-## ⭐ Feature Request
 
--   Feel free to [open an issue](https://github.com/mittal-mayank/pickles/issues) on GitHub to request any additional features.
--   Connect with me on [LinkedIn](https://www.linkedin.com/in/mayank-mittal-6994741ba/) or Mail me at <inbox1.mayankmittal@gmail.com>.
