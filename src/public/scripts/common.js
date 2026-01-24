@@ -1,5 +1,5 @@
 const imgLoading = $('#img-loading');
-const bodyClassList = document.body.classList;
+const bodyClassList = document.body.classList;  
 
 function setDarkMode() {
     bodyClassList.add('dark-mode');
