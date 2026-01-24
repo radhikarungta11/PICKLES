@@ -2,7 +2,7 @@
 
 # PICKLES
 
-[PICKLES](https://pic-kles.azurewebsites.net/) is an image sharing website that allows users to add posts inside communities of like minded people.
+[PICKLES](https://pic-kles.azurewebsites.net/) is an image  sharing website that allows users to add posts inside communities of like minded people.
 
 You can add posts, create communties, follow communities, view posts curated for you and much more!
 
