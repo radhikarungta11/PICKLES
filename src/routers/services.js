@@ -3,7 +3,7 @@ const { checkLogInStatus } = require('../middlewares/authentication');
 const {
     renderLogged,   
     userLogIn,
-    userSignUp,
+    userSignUp,  
     userLogOut,
     setTheme,
 } = require('../controllers/services');
