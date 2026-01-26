@@ -12,7 +12,7 @@ const { exceptionHandler } = require('../variables');
 
 router.get(
     ['/', '/c/:name'],
-    exceptionHandler(checkLogInStatus),
+    exceptionHandler(checkLogInStatus),  
     exceptionHandler(renderLogged)
 );
 
