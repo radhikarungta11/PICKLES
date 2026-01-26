@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { checkLogInStatus } = require('../middlewares/authentication');
 const {
-    renderLogged,
+    renderLogged,   
     userLogIn,
     userSignUp,
     userLogOut,
