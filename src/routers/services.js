@@ -17,7 +17,7 @@ router.get(
 );
 
 router.post('/auth/login', exceptionHandler(userLogIn));
-router.post(
+router.post( 
     '/auth/signup',
     exceptionHandler(processAvatar),
     exceptionHandler(userSignUp)
