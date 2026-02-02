@@ -4,3 +4,4 @@
 /uploads/images/postFiles/*
 !/**/.gitkeep
 env.json
+  
