@@ -3,7 +3,7 @@ let contentPath = contentLocation
     : '/api/users/communityFeed';
 
 $('#btn-logout').on('click', () =>
-    $.ajax({
+    $.ajax({  
         url: '/auth/logout',
         type: 'DELETE',
         success: () => (location.href = location.pathname),
