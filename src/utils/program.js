@@ -3,3 +3,4 @@ function comparePosts(post1, post2) {
 }
 
 module.exports = { comparePosts };   
+ 
