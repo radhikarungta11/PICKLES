@@ -2,7 +2,7 @@
   Global scope
 */
 :root {
-    /* Change primary color from blue to indigo */
+    /* Change primary color from blue to indigo */ 
 
     --primary-color: var(--indigo-color); /* Before: var(--blue-color) */
     --primary-color-light: var(
